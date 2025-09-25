@@ -1,0 +1,11 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1; /* biar ngisi sisa tinggi layar */
+    min-height: 100vh; /* jaga supaya minimal 100vh */
+}

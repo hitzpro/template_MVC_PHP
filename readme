@@ -1,0 +1,76 @@
+##cara tambah halaman
+
+1. di routes.php tambah array baru, untuk mengarah ke controller barunya.
+2. buat controller baru, yang pathnya sesuai dengan yang ada di route.
+    isinya : 
+        Tentukan judul halaman ($title)
+        Tentukan file view yang mau dipanggil ($content)
+        (Opsional) panggil model kalau butuh data dari database
+        Terakhir, include views/layout.php
+
+3. Buat file baru di folder views/, sesuai dengan $content yang kamu tentukan di controller.
+Isinya murni HTML (boleh diselipi <?= ?> buat echo data).
+
+
+
+##cara atur component form
+
+
+1. buat array assoc : 
+$fields = [
+  [
+    'name' => 'username',
+    'label' => 'Username',
+    'type' => 'text',
+    'placeholder' => 'Choose a username',
+    'required' => true,
+  ],
+  [
+    'name' => 'email',
+    'label' => 'Email Address',
+    'type' => 'email',
+    'placeholder' => 'Enter your email',
+    'required' => true,
+  ],
+  [
+    'name' => 'password',
+    'label' => 'Password',
+    'type' => 'password',
+    'placeholder' => 'Create a password',
+    'required' => true,
+  ]
+];
+
+itu untuk ada berapa inputan yang ada dalam sebuah form.
+
+2. text untuk tombol submitnya : 
+$submitText = "Login"; 
+
+itu diganti dengan textnya sesuka kita
+
+3. buat action formnya : 
+$action = "process_register.php"; 
+
+itu diganti, sesuka kita dengan si actionnya mau ditaro dimana nanti.
+
+
+
+
+##cara atur component carousel
+1. atur seperti ini di controller: 
+<?php
+$images = [
+  "https://picsum.photos/1200/400?random=10",
+  "https://picsum.photos/1200/400?random=11",
+  "https://picsum.photos/1200/400?random=12",
+  "https://picsum.photos/1200/400?random=13",
+  "https://picsum.photos/1200/400?random=14",
+];
+$id = "carouselPage2";
+
+?>
+
+itu untuk id dan image pada carouselnya.
+
+2. terus di controller buat variabel components, untuk path ke si komponen carouselnya
+3. tinggal include si variabelnya di views.
