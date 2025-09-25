@@ -1,76 +1,158 @@
-##cara tambah halaman
+# Template MVC PHP
 
-1. di routes.php tambah array baru, untuk mengarah ke controller barunya.
-2. buat controller baru, yang pathnya sesuai dengan yang ada di route.
-    isinya : 
-        Tentukan judul halaman ($title)
-        Tentukan file view yang mau dipanggil ($content)
-        (Opsional) panggil model kalau butuh data dari database
-        Terakhir, include views/layout.php
+Project sederhana dengan struktur MVC (Model-View-Controller) menggunakan PHP + Bootstrap.
 
-3. Buat file baru di folder views/, sesuai dengan $content yang kamu tentukan di controller.
-Isinya murni HTML (boleh diselipi <?= ?> buat echo data).
+---
 
+## 🚀 Cara Tambah Halaman
 
+1. **Tambahkan route baru di `routes.php`**
+   ```php
+   $routes = [
+     "/home" => "controllers/HomeController.php",
+     "/about" => "controllers/AboutController.php",
+   ];
+   ```
 
-##cara atur component form
+2. **Buat controller baru** (path sesuai dengan `routes.php`).
+   - Tentukan judul halaman:
+     ```php
+     $title = "About Us";
+     ```
+   - Tentukan file view yang mau dipanggil:
+     ```php
+     $content = "views/about.php";
+     ```
+   - (Opsional) panggil model kalau butuh data dari database.
+   - Terakhir, include layout:
+     ```php
+     include "views/layout.php";
+     ```
 
+3. **Buat file view baru** di folder `views/`, sesuai `$content` yang dipanggil.  
+   Isinya murni HTML (boleh pakai `<?= ?>` untuk menampilkan data).
 
-1. buat array assoc : 
-$fields = [
-  [
-    'name' => 'username',
-    'label' => 'Username',
-    'type' => 'text',
-    'placeholder' => 'Choose a username',
-    'required' => true,
-  ],
-  [
-    'name' => 'email',
-    'label' => 'Email Address',
-    'type' => 'email',
-    'placeholder' => 'Enter your email',
-    'required' => true,
-  ],
-  [
-    'name' => 'password',
-    'label' => 'Password',
-    'type' => 'password',
-    'placeholder' => 'Create a password',
-    'required' => true,
-  ]
-];
+---
 
-itu untuk ada berapa inputan yang ada dalam sebuah form.
+## 📝 Cara Atur Component Form
 
-2. text untuk tombol submitnya : 
-$submitText = "Login"; 
+1. **Buat array field input di controller**
+   ```php
+   $fields = [
+     [
+       'name' => 'username',
+       'label' => 'Username',
+       'type' => 'text',
+       'placeholder' => 'Choose a username',
+       'required' => true,
+     ],
+     [
+       'name' => 'email',
+       'label' => 'Email Address',
+       'type' => 'email',
+       'placeholder' => 'Enter your email',
+       'required' => true,
+     ],
+     [
+       'name' => 'password',
+       'label' => 'Password',
+       'type' => 'password',
+       'placeholder' => 'Create a password',
+       'required' => true,
+     ],
+   ];
+   ```
 
-itu diganti dengan textnya sesuka kita
+2. **Tentukan tombol submit**
+   ```php
+   $submitText = "Login";
+   ```
 
-3. buat action formnya : 
-$action = "process_register.php"; 
+3. **Atur action form**
+   ```php
+   $action = "process_register.php";
+   ```
 
-itu diganti, sesuka kita dengan si actionnya mau ditaro dimana nanti.
+4. **Include komponen form**
+   ```php
+   include "views/components/form.php";
+   ```
 
+---
 
+## 🖼️ Cara Atur Component Carousel
 
+1. **Definisikan array gambar + ID di controller**
+   ```php
+   $images = [
+     "https://picsum.photos/1200/400?random=10",
+     "https://picsum.photos/1200/400?random=11",
+     "https://picsum.photos/1200/400?random=12",
+     "https://picsum.photos/1200/400?random=13",
+     "https://picsum.photos/1200/400?random=14",
+   ];
+   $id = "carouselPage2";
+   ```
 
-##cara atur component carousel
-1. atur seperti ini di controller: 
-<?php
-$images = [
-  "https://picsum.photos/1200/400?random=10",
-  "https://picsum.photos/1200/400?random=11",
-  "https://picsum.photos/1200/400?random=12",
-  "https://picsum.photos/1200/400?random=13",
-  "https://picsum.photos/1200/400?random=14",
-];
-$id = "carouselPage2";
+2. **Tentukan path komponen di variabel**
+   ```php
+   $carousel = "views/components/carousel.php";
+   ```
 
-?>
+3. **Include di view**
+   ```php
+   include $carousel;
+   ```
 
-itu untuk id dan image pada carouselnya.
+---
 
-2. terus di controller buat variabel components, untuk path ke si komponen carouselnya
-3. tinggal include si variabelnya di views.
+## 📂 Struktur Folder Singkat
+
+```
+project/
+│── controllers/
+│   └── HomeController.php
+│   └── AboutController.php
+│
+│── models/
+│   └── User.php
+│
+│── views/
+│   ├── layout.php
+│   ├── home.php
+│   ├── about.php
+│   └── components/
+│       ├── navbar.php
+│       ├── footer.php
+│       ├── form.php
+│       ├── carousel.php
+│       └── ...
+│
+│── routes.php
+│── index.php
+│── public/
+│   ├── css/global.css
+│   └── js/app.js
+```
+
+---
+
+## 📌 Cara Clone & Jalankan
+
+1. Clone repository:
+   ```bash
+   git clone https://github.com/hitzpro/template_MVC_PHP.git
+   ```
+
+2. Masuk ke folder project:
+   ```bash
+   cd template_MVC_PHP
+   ```
+
+3. Jalankan dengan XAMPP / PHP server bawaan:
+   ```bash
+   php -S localhost:8000
+   ```
+
+4. Buka di browser:
+   [http://localhost:8000](http://localhost:8000)
